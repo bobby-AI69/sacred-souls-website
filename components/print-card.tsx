@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import type { Print } from "@/lib/prints";
 
 const AUD = new Intl.NumberFormat("en-AU", {
@@ -37,10 +38,20 @@ export function PrintCard({ print }: { print: Print }) {
   return (
     <article className="group flex flex-col border border-white/10 bg-obsidian transition hover:border-smoke/50">
       <div className="relative aspect-[3/4] overflow-hidden">
-        <div
-          className="absolute inset-0 transition duration-700 group-hover:scale-[1.04]"
-          style={{ background: print.palette }}
-        />
+        {print.image ? (
+          <Image
+            src={print.image}
+            alt={print.title}
+            fill
+            className="object-cover transition duration-700 group-hover:scale-[1.04]"
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
+        ) : (
+          <div
+            className="absolute inset-0 transition duration-700 group-hover:scale-[1.04]"
+            style={{ background: print.palette }}
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-transparent to-transparent" />
         <div className="absolute top-5 left-5 text-[10px] uppercase tracking-[0.4em] text-gold/80">
           {print.subtitle}

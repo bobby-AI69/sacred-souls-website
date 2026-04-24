@@ -5,37 +5,80 @@ export type Print = {
   priceAUD: number; // in dollars
   description: string;
   palette: string; // CSS gradient for placeholder artwork
+  image?: string; // optional actual image path (in /public)
 };
 
 export const PRINTS: Print[] = [
   {
-    id: "print-ghost-bride",
-    title: "The Ghost Bride",
-    subtitle: "A3 · Digital Print",
-    priceAUD: 32,
-    description:
-      "A veil that moves on its own. Burgundy smoke, candle-light, and a vow written in disappearing ink.",
-    palette:
-      "radial-gradient(ellipse at 30% 25%, rgba(232,164,160,0.55), transparent 55%), radial-gradient(ellipse at 70% 80%, rgba(92,26,27,0.85), transparent 60%), linear-gradient(180deg, #1a0d0e 0%, #050303 100%)",
+    id: "print-chains-1",
+    title: "she held the chain loosely",
+    subtitle: "Digital Print · Chained Love Series",
+    priceAUD: 34,
+    description: "Power was never in the iron. It was in the hand that held it without tightening.",
+    palette: "linear-gradient(180deg, #0a0608 0%, #1a0d14 100%)",
+    image: "/renderedsoulschains1.png",
   },
   {
-    id: "print-written-in-the-walls",
-    title: "Written in the Walls",
-    subtitle: "A2 · Digital Print",
-    priceAUD: 48,
-    description:
-      "Wallpaper peeled back to reveal a name. Her name. Yours, maybe. Gold leaf bleeding into shadow.",
-    palette:
-      "radial-gradient(ellipse at 60% 30%, rgba(212,162,76,0.5), transparent 55%), radial-gradient(ellipse at 20% 80%, rgba(232,164,160,0.35), transparent 60%), linear-gradient(180deg, #120e0c 0%, #040404 100%)",
+    id: "print-chains-2",
+    title: "willing",
+    subtitle: "Digital Print · Chained Love Series",
+    priceAUD: 34,
+    description: "He could have left at any time. That was the whole point.",
+    palette: "linear-gradient(180deg, #0a0608 0%, #1a0d14 100%)",
+    image: "/renderedsoulchains2.png",
   },
   {
-    id: "print-she-wasnt-there",
-    title: "she wasn't there",
-    subtitle: "A4 · Digital Print",
-    priceAUD: 24,
-    description:
-      "An empty chair. A breath on the glass. The moment the frame remembers who left.",
-    palette:
-      "radial-gradient(ellipse at 50% 20%, rgba(232,164,160,0.4), transparent 60%), radial-gradient(ellipse at 50% 100%, rgba(10,10,10,1), transparent 60%), linear-gradient(180deg, #0e0b0c 0%, #050505 100%)",
+    id: "print-chains-3",
+    title: "the weight of staying",
+    subtitle: "Digital Print · Chained Love Series",
+    priceAUD: 34,
+    description: "Not every chain is a prison. Some are a promise.",
+    palette: "linear-gradient(180deg, #0a0608 0%, #1a0d14 100%)",
+    image: "/renderedsoulchains3.png",
+  },
+  {
+    id: "print-chains-4",
+    title: "devotion",
+    subtitle: "Digital Print · Chained Love Series",
+    priceAUD: 34,
+    description: "The smoke remembered them long after the candles went cold.",
+    palette: "linear-gradient(180deg, #0a0608 0%, #1a0d14 100%)",
+    image: "/renderedsoulchains4.png",
+  },
+  {
+    id: "print-chains-5",
+    title: "coral and iron",
+    subtitle: "Digital Print · Chained Love Series",
+    priceAUD: 34,
+    description: "Beautiful things and brutal things are not always different things.",
+    palette: "linear-gradient(180deg, #0a0608 0%, #1a0d14 100%)",
+    image: "/renderedsoulchains5.png",
+  },
+  {
+    id: "print-chains-6",
+    title: "surrender",
+    subtitle: "Digital Print · Chained Love Series",
+    priceAUD: 34,
+    description: "She didn't ask him to kneel. He just did.",
+    palette: "linear-gradient(180deg, #0a0608 0%, #1a0d14 100%)",
+    image: "/renderedsoulchains6.png",
+  },
+  {
+    id: "print-chains-7",
+    title: "the last room",
+    subtitle: "Digital Print · Chained Love Series",
+    priceAUD: 34,
+    description: "Every corridor led here. Every door opened into her.",
+    palette: "linear-gradient(180deg, #0a0608 0%, #1a0d14 100%)",
+    image: "/renderedsoulchains7.png",
+  },
+  {
+    id: "print-chains-8",
+    title: "still here",
+    subtitle: "Digital Print · Chained Love Series",
+    priceAUD: 34,
+    description: "The smoke cleared. He hadn't moved.",
+    palette: "linear-gradient(180deg, #0a0608 0%, #1a0d14 100%)",
+    image: "/renderedsoulchains8.png",
   },
 ];
