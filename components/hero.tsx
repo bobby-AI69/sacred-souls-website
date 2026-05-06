@@ -1,20 +1,18 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export function Hero() {
   return (
     <section className="relative h-[100svh] w-full overflow-hidden grain">
-      {/* Background video — swap `poster` and `src` for TikTok clips */}
-      <video
-        className="absolute inset-0 h-full w-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        poster="/hero-poster.svg"
-      >
-        <source src="/hero.mp4" type="video/mp4" />
-      </video>
+      {/* Hero image — swap src for TikTok clip or a new MJ image */}
+      <Image
+        src="/renderedsoulschains1.png"
+        alt="Sacred Soul"
+        fill
+        priority
+        className="object-cover object-top"
+        sizes="100vw"
+      />
 
       {/* Dark base wash */}
       <div className="absolute inset-0 bg-obsidian/55" />

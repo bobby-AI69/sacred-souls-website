@@ -13,10 +13,15 @@ function getStripe(): Stripe {
 }
 
 function getSiteUrl(req: Request): string {
-  const configured = process.env.NEXT_PUBLIC_SITE_URL;
+  const configured = process.env.SITE_URL ?? process.env.NEXT_PUBLIC_SITE_URL;
   if (configured) return configured.replace(/\/$/, "");
-  const url = new URL(req.url);
-  return `${url.protocol}//${url.host}`;
+  // Derive from the incoming request URL as fallback
+  try {
+    const url = new URL(req.url);
+    return `${url.protocol}//${url.host}`;
+  } catch {
+    return "https://sacred-souls.com.au";
+  }
 }
 
 export async function POST(req: Request) {
@@ -47,7 +52,12 @@ export async function POST(req: Request) {
     );
   }
 
-  const siteUrl = getSiteUrl(req);
+  const siteUrl = "https://sacred-souls.com.au";
+
+  // Debug: log what we're about to send
+  console.log("[checkout] siteUrl:", siteUrl);
+  console.log("[checkout] success_url:", `${siteUrl}/prints/success?session_id={CHECKOUT_SESSION_ID}`);
+  console.log("[checkout] stripe key prefix:", process.env.STRIPE_SECRET_KEY?.slice(0, 12));
 
   try {
     const session = await stripe.checkout.sessions.create({
@@ -70,17 +80,15 @@ export async function POST(req: Request) {
       metadata: { printId: print.id },
       success_url: `${siteUrl}/prints/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${siteUrl}/prints/cancel`,
-      // Collect email so a download link can be delivered after payment.
       customer_creation: "always",
     });
 
     return NextResponse.json({ url: session.url });
   } catch (err) {
+    const message = err instanceof Error ? err.message : "Failed to create checkout session";
+    console.error("[checkout] error:", message, err);
     return NextResponse.json(
-      {
-        error:
-          err instanceof Error ? err.message : "Failed to create checkout session",
-      },
+      { error: message, siteUrl, keyPrefix: process.env.STRIPE_SECRET_KEY?.slice(0, 12) },
       { status: 500 }
     );
   }
